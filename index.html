@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <style>
+      #app,
+      .input {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- <div class="input">
+      <input id="input" />
+      <button id="btn">add</button>
+    </div> -->
+    <script>
+      window.addEventListener("message", (e) => {
+        localStorage.setItem("app", e.data);
+        addToDom();
+      });
+      function addToDom() {
+        document.querySelector("#app").innerHTML = `
+          <h1>App 2 Localstorage data</h1>
+          <p>${JSON.stringify(localStorage.getItem("app"))}</p>
+`;
+      }
+      addToDom();
+    </script>
+  </body>
+</html>
